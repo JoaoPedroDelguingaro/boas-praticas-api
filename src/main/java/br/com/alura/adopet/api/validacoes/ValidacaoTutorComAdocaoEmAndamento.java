@@ -10,25 +10,20 @@ import br.com.alura.adopet.api.repository.TutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+
 
 @Component
 public class ValidacaoTutorComAdocaoEmAndamento implements ValidacaoSolicitacaoAdocao{
-
-    @Autowired
-    private TutorRepository tutorRepository;
 
     @Autowired
     private AdocaoRepository adocaoRepository;
 
 
     public void validar(SolicitacaoAdocaoDto dto) {
-        Tutor tutor = tutorRepository.getReferenceById(dto.idTutor());
-        List<Adocao> adocoes = adocaoRepository.findAll();
-        for (Adocao a : adocoes) {
-            if (a.getTutor() == tutor && a.getStatus() == StatusAdocao.AGUARDANDO_AVALIACAO) {
+        var adocaoEmAndamento = adocaoRepository
+                .existsByTutorIdAndStatus(dto.idTutor(), StatusAdocao.AGUARDANDO_AVALIACAO);
+        if (adocaoEmAndamento) {
                 throw new ValidacaoException("Tutor já possui outra adoção aguardando avaliação!");
-            }
         }
     }
 }
