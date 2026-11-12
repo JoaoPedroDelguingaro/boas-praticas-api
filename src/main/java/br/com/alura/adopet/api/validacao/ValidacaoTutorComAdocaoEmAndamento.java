@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
-
 @Component
 public class ValidacaoTutorComAdocaoEmAndamento implements ValidacaoSolicitacaoAdocao {
 
@@ -20,7 +19,7 @@ public class ValidacaoTutorComAdocaoEmAndamento implements ValidacaoSolicitacaoA
         var adocaoEmAndamento = adocaoRepository
                 .existsByTutorIdAndStatus(dto.idTutor(), StatusAdocao.AGUARDANDO_AVALIACAO);
         if (adocaoEmAndamento) {
-                throw new ValidacaoException("Tutor já possui outra adoção aguardando avaliação!");
+            throw new ValidacaoException("Tutor já possui outra adoção aguardando avaliação!");
         }
     }
 }

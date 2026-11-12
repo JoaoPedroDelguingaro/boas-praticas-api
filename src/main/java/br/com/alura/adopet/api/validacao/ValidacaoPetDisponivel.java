@@ -13,7 +13,7 @@ public class ValidacaoPetDisponivel implements ValidacaoSolicitacaoAdocao {
     @Autowired
     private PetRepository petRepository;
 
-    public void validar(SolicitacaoAdocaoDto dto){
+    public void validar(SolicitacaoAdocaoDto dto) {
         Pet pet = petRepository.getReferenceById(dto.idPet());
 
         if (pet.getAdotado()) {

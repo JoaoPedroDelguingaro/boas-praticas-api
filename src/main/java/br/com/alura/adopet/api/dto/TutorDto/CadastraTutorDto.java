@@ -6,4 +6,5 @@ import jakarta.validation.constraints.Pattern;
 
 public record CadastraTutorDto(@NotBlank String nome,
                                @NotBlank @Pattern(regexp = "\\(?\\d{2}\\)?\\d?\\d{4}-?\\d{4}") String telefone,
-                               @NotBlank @Email String email) {}
+                               @NotBlank @Email String email) {
+}

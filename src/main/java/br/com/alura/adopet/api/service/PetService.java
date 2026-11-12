@@ -5,7 +5,6 @@ import br.com.alura.adopet.api.dto.PetDto.PetDto;
 import br.com.alura.adopet.api.model.Abrigo;
 import br.com.alura.adopet.api.model.Pet;
 import br.com.alura.adopet.api.repository.PetRepository;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +24,7 @@ public class PetService {
     }
 
     public void cadastrarPet(Abrigo abrigo, CadastraPetDto dto) {
-        repository.save(new Pet(dto,abrigo));
+        repository.save(new Pet(dto, abrigo));
     }
 }
 
